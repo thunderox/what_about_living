@@ -20,7 +20,9 @@
 
 		// mouse clicked up arrow to go north
 
-		if (mx >= 394 && mx <= 440 && my >= 106 && my <= 220)
+		if (mx >= clickables[1].xpos && mx <= clickables[1].xpos + clickables[1].width
+			&& my >= clickables[1].ypos && my <= clickables[1].ypos + clickables[1].height
+				&& rooms[current_room_number].north > 0)
 		{
 			current_room_number = rooms[current_room_number].north;
 			set_up_current_room();
@@ -29,7 +31,9 @@
 
 		// mouse clicked up arrow to go south
 
-		if (mx >= 396 && mx <= 440 && my >= 380 && my <= 500)
+		if (mx >= clickables[2].xpos && mx <= clickables[2].xpos + clickables[2].width
+			&& my >= clickables[2].ypos && my <= clickables[2].ypos + clickables[2].height
+				&& rooms[current_room_number].south > 0)
 		{
 			current_room_number = rooms[current_room_number].south;
 			set_up_current_room();
@@ -38,7 +42,9 @@
 
 		// mouse clicked up arrow to go east
 
-		if (mx >= 674 && mx <= 796 && my >= 274 && my <= 324)
+		if (mx >= clickables[3].xpos && mx <= clickables[3].xpos + clickables[3].width
+			 && my >= clickables[3].ypos && clickables[3].ypos + clickables[3].height
+				&& rooms[current_room_number].east > 0)
 		{
 			current_room_number = rooms[current_room_number].east;
 			set_up_current_room();
@@ -47,7 +53,9 @@
 
 		// mouse clicked up arrow to go west
 
-		if (mx >= 32 && mx <= 149 && my >= 274 && my <= 320)
+		if (mx >= clickables[4].xpos && mx <= clickables[4].xpos + clickables[4].width
+			&& my >= clickables[4].ypos && my <= clickables[4].ypos + clickables[4].height
+				&& rooms[current_room_number].west > 0)
 		{
 			current_room_number = rooms[current_room_number].west;
 			set_up_current_room();

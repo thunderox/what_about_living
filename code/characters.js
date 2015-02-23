@@ -21,7 +21,7 @@ function new_character(name, description, image_file, room, xpos, ypos)
 function add_characters()
 {
 
-	new_character("Kai", "Fiercely loyal and always by your side.", "",1, 200, 150);
+	new_character("Kai", "Fiercely loyal and always by your side.", "gfx/character_kai.png",1, 40, 150);
 	new_character("Rain","Fiercely loyal and always by your side.", "", 0, 200, 150);
 	new_character("Amy", "Don't be fooled by her cute charm, She can be mean and a bully, and will probably leave you for dead.", "", 0, 200, 150);
 	new_character("Elissa", "Kind, sweet and caring and very friendly, sometimes overwhelmingly so!", "", 0, 200, 150);

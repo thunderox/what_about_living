@@ -41,6 +41,8 @@
 			{	
 				cn = visible_clickables[x];
 				ctx.drawImage ( clickables[cn].image, clickables[cn].xpos, clickables[cn].ypos );
+				clickables[cn].width = clickables[cn].image.width;
+				clickables[cn].height = clickables[cn].image.height;
 			}
 
 

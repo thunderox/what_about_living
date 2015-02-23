@@ -14,9 +14,10 @@ function new_room(room_number, name, image_file, north, south, east, west)
 	rooms[room_number].west = west;
 }
 
-new_room(1, "Hospital", "gfx/room3_hospital.jpg", 0, 3, 0, 0);
+
+new_room(1, "Hospital", "gfx/room1_hospital.jpg", 0, 3, 0, 0);
 new_room(2, "Car Park", "gfx/carpark.png", 0, 6, 3, 0);
-new_room(3, "Hospital", "gfx/room3_hospital.jpg", 1, 7, 4, 2);
+new_room(3, "Hospital", "gfx/room3_hospital_reception.png", 1, 7, 4, 2);
 new_room(4, "Chemist", "gfx/", 0, 8, 5, 3);
 new_room(5, "Staff Room", "gfx/", 0, 0, 0, 4);
 new_room(6, "Road", "gfx/road1.jpg", 2, 12, 7, 0);
@@ -34,7 +35,6 @@ new_room(17, "Recreation Area", "gfx/", 12, 19, 0, 0);
 new_room(18, "Recreation Area", "gfx/", 13, 0, 0, 0);
 new_room(19, "The Toilets", "gfx/toilet.png", 17, 0, 0, 0);
 new_room(20, "Check Point", "gfx/checkpont.png", 16, 0, 0, 0);
-
 
 
 
