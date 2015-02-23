@@ -9,6 +9,8 @@
 	c.addEventListener("mousedown", doMouseDown, false);
 	c.addEventListener("mousemove", doMouseMove, false);
 
+
+
 //  --------------------- Mouse down -------------------------------------------
 
 	function doMouseDown(event)
@@ -103,6 +105,8 @@
 	{
 		show_canvas();
 	}
+
+
 
 
 
