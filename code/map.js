@@ -1,6 +1,7 @@
 
 function room() {; }
 var rooms = [];
+var current_room_number = 6;
 
 function new_room(room_number, name, image_file, north, south, east, west)
 {
@@ -33,6 +34,26 @@ new_room(17, "Recreation Area", "gfx/", 12, 19, 0, 0);
 new_room(18, "Recreation Area", "gfx/", 13, 0, 0, 0);
 new_room(19, "The Toilets", "gfx/toilet.png", 17, 0, 0, 0);
 new_room(20, "Check Point", "gfx/checkpont.png", 16, 0, 0, 0);
+
+
+
+
+	function set_up_current_room()
+	{
+		clickables[0].image_name = rooms[current_room_number].image_file;
+
+		if (rooms[current_room_number].north == 0) { set_clickable_visibility ("arrow_up", false); }
+			else { set_clickable_visibility ("arrow_up", true); }
+
+		if (rooms[current_room_number].south == 0) { set_clickable_visibility ("arrow_down", false); }
+			else { set_clickable_visibility ("arrow_down", true); }
+
+		if (rooms[current_room_number].east == 0) { set_clickable_visibility ("arrow_east", false); }
+			else { set_clickable_visibility ("arrow_east", true); }
+
+		if (rooms[current_room_number].west == 0) { set_clickable_visibility ("arrow_west", false); }
+			else { set_clickable_visibility ("arrow_west", true); }
+	}
 
 
 

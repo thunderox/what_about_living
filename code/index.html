@@ -20,13 +20,14 @@
 
 	<canvas id="myCanvas" width="800" height="500" style="border:1px solid #000000;">
 	</canvas> 
-
+	<script type='text/javascript' src='clickables.js'></script>
 	<script type='text/javascript' src='font-detect.js'></script>
 	<script type='text/javascript' src='map.js'></script>
 	<script type='text/javascript' src='keys.js'></script>
 	<script type='text/javascript' src='mouse.js'></script>
+	<script type='text/javascript' src='logic.js'></script>
+	<script type='text/javascript' src='screen.js'></script>
 	<script type='text/javascript' src='characters.js'></script>
-	<script type='text/javascript' src='clickables.js'></script>
 	<script>
 
 		//----------------------------------------------------------
@@ -54,111 +55,38 @@
 
 		}
 
-		var current_room_number = 6;
-
-		var image_number = 0;
-		
 		add_clickable("room",rooms[current_room_number].image_file, 0,0); 
-		inc_image_number();
+		set_clickable_persistency ("room", true);
 
 		add_clickable("arrow_north","gfx/arrow_up.png", (800/2)-32, 72);
-		inc_image_number();
+		set_clickable_persistency ("arrow_north", true);
 
 		add_clickable("arrow_south","gfx/arrow_down.png", (800/2)-32, 500-140);
-		inc_image_number();
+		set_clickable_persistency ("arrow_south", true);
 
 		add_clickable("arrow_east","gfx/arrow_right.png", 800-140, 500/2); 
-		inc_image_number();
+		set_clickable_persistency ("arrow_east", true);
 
 		add_clickable("arrow_west","gfx/arrow_left.png", 0, 500/2);
-		inc_image_number();
-
-		add_clickable("player1","gfx/AvatarMalePlayer.png", 800-128,0); 
-		inc_image_number();
-
-		add_clickable("player1_energy","gfx/energy.png", 800-250,128-24); 
-		inc_image_number();
-
-		add_clickable("inventory_bag","gfx/InventoryBag.png", 800-220,8);
-		inc_image_number();
-
-		add_clickable("inventory_list","gfx/InventoryList.png", 800-256,128+16);
-		inc_image_number();
+		set_clickable_persistency ("arrow_west", true);
 
 		add_clickable("player1_panel","gfx/PlayerPanel.png", 800-256,0);
-		inc_image_number();
+		set_clickable_persistency ("player1_panel", true);
 
+		add_clickable("player1","gfx/AvatarMalePlayer.png", 800-128,0); 
+		set_clickable_persistency ("player1", true);
 
+		add_clickable("player1_energy","gfx/energy.png", 800-250,128-24);
+		set_clickable_persistency ("player1_energy", true); 
 
- 
+		add_clickable("inventory_bag","gfx/InventoryBag.png", 800-220,8);
+		set_clickable_persistency ("inventory_bag", true);
 
-		FontDetect.onFontLoaded ('DrawingWithMarkers',inc_image_number, null);
+		add_clickable("inventory_list","gfx/InventoryList.png", 800-256,128+16);
 
-		function inc_image_number()
-		{
-			image_number++;
+		add_characters();
 
-			if (image_number == 11) { show_canvas(); }
-		}
-
-		function show_canvas()
-		{
-			var c = document.getElementById("myCanvas");
-			var ctx = c.getContext("2d");
-
-			show_clickable(ctx, "room");
-			show_clickable(ctx, "player1_panel");
-
-			ctx.fillStyle = "#000000";
-			ctx.strokeRect(800-256,0,256,128);
-	 
-			ctx.fillStyle = "rgba(0,0,0, 0.75)";
-			ctx.fillRect(4,20,536,48);
-			ctx.fillStyle = "#000000";
-			ctx.strokeRect(4,20,536,48);
-
-			show_clickable(ctx, "player1");
-			show_clickable(ctx, "player1_energy");
-			show_clickable(ctx, "inventory_bag");
-
-
-			if ( rooms[current_room_number].north > 0)
-			{
-				if (current_arrow != 1) { ctx.globalAlpha = 0.75; } else { ctx.globalAlpha = 1.0; }
-				show_clickable(ctx, "arrow_north");
-			}
-
-			if ( rooms[current_room_number].south > 0)
-			{
-				if (current_arrow != 2) { ctx.globalAlpha = 0.75; } else { ctx.globalAlpha = 1.0; }
-				show_clickable(ctx, "arrow_south");
-			}
-
-			if ( rooms[current_room_number].east > 0 )
-			{
-				if (current_arrow != 3) { ctx.globalAlpha = 0.75; } else { ctx.globalAlpha = 1.0; }
-				show_clickable(ctx, "arrow_east");		
-			}
-
-			if ( rooms[current_room_number].west > 0 )
-			{		
-				if (current_arrow != 4) { ctx.globalAlpha = 0.75; } else { ctx.globalAlpha = 1.0; }
-				show_clickable(ctx, "arrow_west");
-			}
-
-
-
-
-			ctx.globalAlpha = 1.0;
-
-			// show_clickable(ctx, "inventory_list");
-
-			show_characters(current_room_number, ctx);
-
-			ctx.fillStyle = "#ffffff";
-			ctx.font = "26px DrawingWithMarkers";
-			ctx.fillText("Current location - " + rooms[current_room_number].name,10,50);
-		}
+		FontDetect.onFontLoaded ('DrawingWithMarkers',font_loaded, null);
 
 		var lastRender = new Date();
 
@@ -166,11 +94,33 @@
 		{
 		  	var delta = new Date() - lastRender;
 			checkKeys();
+
+			// =========== This is a workaround for onload google chrome strangeness! ========
+			
+			if (display_now == true)
+			{
+				for (x=0; x < clickables.length; ++x)
+				{
+					if ( clickables[x].image.complete == false ) break;
+					if ( x == clickables.length - 1)
+					{
+						show_canvas();
+						display_now = false; 
+					}
+				}
+			}
+
+
 		        requestAnimationFrame(main_loop);
 		}
 
 
 	        requestAnimationFrame(main_loop);
+
+		function font_loaded()
+		{
+			init_canvas();
+		}
 	
 	</script> 
 

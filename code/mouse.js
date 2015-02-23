@@ -23,8 +23,8 @@
 		if (mx >= 394 && mx <= 440 && my >= 106 && my <= 220)
 		{
 			current_room_number = rooms[current_room_number].north;
-			current_room_img.src = rooms[current_room_number].image_file;
-			current_room_img.onload = current_room_img_loaded;
+			set_up_current_room();
+			init_canvas();
 		}
 
 		// mouse clicked up arrow to go south
@@ -32,8 +32,8 @@
 		if (mx >= 396 && mx <= 440 && my >= 380 && my <= 500)
 		{
 			current_room_number = rooms[current_room_number].south;
-			current_room_img.src = rooms[current_room_number].image_file;
-			current_room_img.onload = current_room_img_loaded;
+			set_up_current_room();
+			init_canvas();
 		}
 
 		// mouse clicked up arrow to go east
@@ -41,8 +41,8 @@
 		if (mx >= 674 && mx <= 796 && my >= 274 && my <= 324)
 		{
 			current_room_number = rooms[current_room_number].east;
-			current_room_img.src = rooms[current_room_number].image_file;
-			current_room_img.onload = current_room_img_loaded;
+			set_up_current_room();
+			init_canvas();
 		}
 
 		// mouse clicked up arrow to go west
@@ -50,13 +50,13 @@
 		if (mx >= 32 && mx <= 149 && my >= 274 && my <= 320)
 		{
 			current_room_number = rooms[current_room_number].west;
-			current_room_img.src = rooms[current_room_number].image_file;
-			current_room_img.onload = current_room_img_loaded;
+			set_up_current_room();
+			init_canvas();
 		}
 
 
 
-		console.log(mx + " - " + my);
+		
 	}
 
 //  --------------------- Mouse Move -------------------------------------------
@@ -96,16 +96,8 @@
 			current_arrow = 4;
 		}
 	
-		show_canvas();
+		
 	}
-
-//  --------------------- show canvas to update screen -------------------------------------------
-
-	function current_room_img_loaded()
-	{
-		show_canvas();
-	}
-
 
 
 

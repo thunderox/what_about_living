@@ -32,15 +32,13 @@
 	{
 		if (keys[38] == key_depressed)
 		{
-			console.log("North!!!!!!!!!!!");
 			keys[38] = 0;
 
 			if ( rooms[current_room_number].north != 0 )
 			{
 				current_room_number = rooms[current_room_number].north;
-				current_room_img.src = rooms[current_room_number].image_file;
-				current_room_img.onload = current_room_img_loaded;
-				
+				set_up_current_room();
+				init_canvas();		
 			}
 
 		}
@@ -53,41 +51,38 @@
 
 		if (keys[40] == key_depressed)
 		{
-			console.log("South!!!!!!!!!!!");
 			keys[40] = 0;
 
 			if ( rooms[current_room_number].south != 0 )
 			{
 				current_room_number = rooms[current_room_number].south;
-				current_room_img.src = rooms[current_room_number].image_file;
-				current_room_img.onload = current_room_img_loaded;
+				set_up_current_room();
+				init_canvas();
 			}
 		}
 
 		if (keys[39] == key_depressed)
 		{
-			console.log("East!!!!!!!!!!!");
 			keys[39] = 0;
 
 			if ( rooms[current_room_number].east != 0 )
 			{
 				current_room_number = rooms[current_room_number].east;
-				current_room_img.src = rooms[current_room_number].image_file;
-				current_room_img.onload = current_room_img_loaded;
+				set_up_current_room();
+				init_canvas();
 			}
 		}
 
 
 		if (keys[37] == key_depressed)
 		{
-			console.log("West!!!!!!!!!!!");
 			keys[37] = 0;
 
 			if ( rooms[current_room_number].west != 0 )
 			{
 				current_room_number = rooms[current_room_number].west;
-				current_room_img.src = rooms[current_room_number].image_file;
-				current_room_img.onload = current_room_img_loaded;
+				set_up_current_room();
+				init_canvas();
 			}
 		}
 
