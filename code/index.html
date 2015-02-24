@@ -71,19 +71,21 @@
 		add_clickable("arrow_west","gfx/arrow_left.png", 0, 500/2);
 		set_clickable_persistency ("arrow_west", true);
 
-		add_clickable("player1_panel","gfx/PlayerPanel.png", 800-256,0);
-		set_clickable_persistency ("player1_panel", true);
-
-		add_clickable("player1","gfx/AvatarMalePlayer.png", 800-128,0); 
-		set_clickable_persistency ("player1", true);
-
-		add_clickable("player1_energy","gfx/energy.png", 800-250,128-24);
+		add_clickable("player1_energy","gfx/energy.png", 800-250,150);
 		set_clickable_persistency ("player1_energy", true); 
 
-		add_clickable("inventory_bag","gfx/InventoryBag.png", 800-220,8);
+		add_clickable("inventory_bag","gfx/InventoryBag.png", 800-220,50);
 		set_clickable_persistency ("inventory_bag", true);
 
+		add_clickable("player1_panel","gfx/PlayerPanel.png", 800-280,50);
+		set_clickable_persistency ("player1_panel", true);
+
+		add_clickable("player1","gfx/AvatarMalePlayer.png", 800-128,50); 
+		set_clickable_persistency ("player1", true);
+
 		add_clickable("inventory_list","gfx/InventoryList.png", 800-256,128+16);
+		set_clickable_persistency ("inventory_list", true);
+		set_clickable_visibility ("inventory_list", false);
 
 		add_characters();
 		add_objects();

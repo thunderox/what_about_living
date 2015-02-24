@@ -3,7 +3,6 @@
 //  --------------------- Mouse stuff -------------------------------------------
 
 	var current_arrow = 0;
-
 	var c = document.getElementById("myCanvas");
 
 	c.addEventListener("mousedown", doMouseDown, false);
@@ -61,9 +60,6 @@
 			set_up_current_room();
 			init_canvas();
 		}
-
-
-
 		
 	}
 
@@ -103,7 +99,22 @@
 		{
 			current_arrow = 4;
 		}
+
+		mouse_over_object = 0;
+
+		for (x=0; x<visible_clickables.length; ++x)
+		{
+			cn = visible_clickables[x];
+
+			if (mx >= clickables[cn].xpos && mx <= clickables[cn].xpos + clickables[cn].width
+				&& my >= clickables[cn].ypos && my <= clickables[cn].ypos + clickables[cn].height
+					&& clickables[cn].persist == false)
+			{	
+				mouse_over_object = cn;	
+			}
+		}
 	
+		show_canvas();
 		
 	}
 

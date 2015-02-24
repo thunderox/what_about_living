@@ -7,6 +7,7 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 {
 	var obj_num = add_clickable(name, image_file, xpos, ypos);
 	clickables[obj_num].room = room;
+	clickables[obj_num].description = description;
 
 	objects[object_number] = new object;
 	objects[object_number].description = description;

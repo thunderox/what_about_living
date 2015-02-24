@@ -8,6 +8,7 @@ function new_character(name, description, image_file, room, xpos, ypos)
 	var char_num = add_clickable(name, image_file, xpos, ypos);
 
 	clickables[char_num].room = room;
+	clickables[char_num].description = description;
 
 	characters[char_number] = new character;
 	characters[char_number].name = name;

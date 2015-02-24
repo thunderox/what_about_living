@@ -1,6 +1,7 @@
 
 		var number_of_images_loaded = 0;
 		var display_now = false;
+		var mouse_over_object = 0;
 
 		function image_loaded(cn)
 		{
@@ -47,26 +48,31 @@
 
 
 			ctx.fillStyle = "#000000";
-
-			ctx.strokeRect(800-256,0,256,128);
 	 
 			ctx.fillStyle = "rgba(0,0,0, 0.75)";
-			ctx.fillRect(4,20,536,48);
+			ctx.fillRect(0,0,800,40);
 			ctx.fillStyle = "#000000";
-			ctx.strokeRect(4,20,536,48);
+			ctx.strokeRect(0,0,800,40);
 
 			show_clickable(ctx, "player1");
 		
-
-
 			ctx.globalAlpha = 1.0;
 
-			// show_clickable(ctx, "inventory_list");
+			show_clickable(ctx, "inventory_list");
 
 			ctx.fillStyle = "#ffffff";
-			ctx.font = "26px DrawingWithMarkers";
-			ctx.fillText("Current location - " + rooms[current_room_number].name,10,50);
+		
+			if (mouse_over_object == 0)
+			{
+				ctx.font = "26px DrawingWithMarkers";
+				ctx.fillText("Current location - " + rooms[current_room_number].name,10,30, 786);
+			}
+			else
+			{
+				ctx.font = "26px DrawingWithMarkers";	
+				ctx.fillText(clickables[mouse_over_object].name + " - " + clickables[mouse_over_object].description,10,30, 786);
 
+			}
 
 		}
 
