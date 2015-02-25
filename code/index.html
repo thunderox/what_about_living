@@ -61,27 +61,35 @@
 
 		add_clickable("arrow_north","gfx/arrow_up.png", (800/2)-32, 72);
 		set_clickable_persistency ("arrow_north", true);
+		set_clickable_description ("arrow_north", "You see a way to move northward!");
 
 		add_clickable("arrow_south","gfx/arrow_down.png", (800/2)-32, 500-140);
 		set_clickable_persistency ("arrow_south", true);
+		set_clickable_description ("arrow_south", "You see a way to move southward!");
 
 		add_clickable("arrow_east","gfx/arrow_right.png", 800-140, 500/2); 
 		set_clickable_persistency ("arrow_east", true);
+		set_clickable_description ("arrow_east", "You see a way to move eastward!");
 
 		add_clickable("arrow_west","gfx/arrow_left.png", 0, 500/2);
 		set_clickable_persistency ("arrow_west", true);
+		set_clickable_description ("arrow_west", "You see a way to move westward!");
 
 		add_clickable("player1_energy","gfx/energy.png", 800-250,150);
 		set_clickable_persistency ("player1_energy", true); 
+		set_clickable_description ("player1_energy", "This is how much energy you have.");
+
+		add_clickable("player1","gfx/AvatarMalePlayer.png", 800-128,50); 
+		set_clickable_persistency ("player1", true);
+		set_clickable_description ("player1", "This is you!");
 
 		add_clickable("inventory_bag","gfx/InventoryBag.png", 800-220,50);
 		set_clickable_persistency ("inventory_bag", true);
+		set_clickable_description ("inventory_bag", "This is the bag you keep all your stuff and what not in.");
 
 		add_clickable("player1_panel","gfx/PlayerPanel.png", 800-280,50);
 		set_clickable_persistency ("player1_panel", true);
 
-		add_clickable("player1","gfx/AvatarMalePlayer.png", 800-128,50); 
-		set_clickable_persistency ("player1", true);
 
 		add_clickable("inventory_list","gfx/InventoryList.png", 800-256,128+16);
 		set_clickable_persistency ("inventory_list", true);
@@ -99,25 +107,12 @@
 		  	var delta = new Date() - lastRender;
 			checkKeys();
 
-			// =========== This is a workaround for onload google chrome strangeness! ========
-			
-			if (display_now == true)
-			{
-				for (x=0; x < clickables.length; ++x)
-				{
-					if ( clickables[x].image.complete == false ) break;
-					if ( x == clickables.length - 1)
-					{
-						show_canvas();
-						display_now = false; 
-					}
-				}
-			}
-
+			show_canvas();
 
 		        requestAnimationFrame(main_loop);
 		}
 
+	
 
 	        requestAnimationFrame(main_loop);
 

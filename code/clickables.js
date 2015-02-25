@@ -20,6 +20,7 @@
 		clickables[number_of_clickables].ypos = ypos;
 		clickables[number_of_clickables].image_name = image_name;
 		clickables[number_of_clickables].image = new Image();
+		clickables[number_of_clickables].image.src = image_name;
 		clickables[number_of_clickables].clicked = false;
 		clickables[number_of_clickables].mouseover = false;
 		clickables[number_of_clickables].persist = false;
@@ -43,6 +44,18 @@
 		}
 	}
 
+//---------------------- Set description by name ---------------------------------
+
+	function set_clickable_description (name, description)
+	{
+		for (x=0; x<number_of_clickables; ++x)
+		{
+			if ( clickables[x].name == name )
+			{
+				clickables[x].description = description;
+			}
+		}
+	}
 
 // --------------------- Return image of clickable by name -----------------------
 

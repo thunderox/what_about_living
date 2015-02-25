@@ -108,13 +108,12 @@
 
 			if (mx >= clickables[cn].xpos && mx <= clickables[cn].xpos + clickables[cn].width
 				&& my >= clickables[cn].ypos && my <= clickables[cn].ypos + clickables[cn].height
-					&& clickables[cn].persist == false)
+					&& clickables[cn].name != "room"
+						&& clickables[cn].name != "player1_panel")
 			{	
 				mouse_over_object = cn;	
 			}
 		}
-	
-		show_canvas();
 		
 	}
 

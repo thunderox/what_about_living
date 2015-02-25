@@ -1,6 +1,5 @@
 
 		var number_of_images_loaded = 0;
-		var display_now = false;
 		var mouse_over_object = 0;
 
 		function image_loaded(cn)
@@ -10,7 +9,6 @@
 
 			number_of_images_loaded++;
 
-			if ( number_of_images_loaded == visible_clickables.length ) { display_now = true;  }
 		}
 
 		function init_canvas()
@@ -53,12 +51,8 @@
 			ctx.fillRect(0,0,800,40);
 			ctx.fillStyle = "#000000";
 			ctx.strokeRect(0,0,800,40);
-
-			show_clickable(ctx, "player1");
 		
 			ctx.globalAlpha = 1.0;
-
-			show_clickable(ctx, "inventory_list");
 
 			ctx.fillStyle = "#ffffff";
 		
