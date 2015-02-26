@@ -9,6 +9,7 @@
 	var number_of_clickables = 0;
 
 	var visible_clickables = [];
+	var inventory_list = [];
 
 // --------------------- Add new clickable -------------------------------------
 
@@ -25,6 +26,7 @@
 		clickables[number_of_clickables].mouseover = false;
 		clickables[number_of_clickables].persist = false;
 		clickables[number_of_clickables].visible = true;
+		clickables[number_of_clickables].type = 0;
 		
 		number_of_clickables++;
 
@@ -70,6 +72,19 @@
 		}
 	}
 
+// --------------------- Return ID number by name -----------------------
+
+	function get_clickable_number(name)
+	{
+		for (x=0; x<number_of_clickables; ++x)
+		{
+			if ( clickables[x].name == name )
+			{
+				return x;
+			}
+		}
+	}
+
 // --------------------- Set persistency by name ---------------------------------
 
 	function set_clickable_persistency(name, persistency)
@@ -111,5 +126,22 @@
 			}
 		}
 	}
+
+
+//------------------- Update list of clickables you are carrying --------------------------
+
+	function update_inventory_list()
+	{
+		inventory_list.length = 0;
+		inventory_list = [];
+		for (x=0; x<number_of_clickables; ++x)
+		{
+			if ( clickables[x].room == -1)
+			{
+				inventory_list.push(x);	
+			}
+		}
+	}
+
 
 

@@ -28,11 +28,17 @@
 		}
 
 
-
 		function show_canvas()
 		{
 			var c = document.getElementById("myCanvas");
 			var ctx = c.getContext("2d");
+
+			if ( !clickables[0].image.complete)
+			{
+				ctx.fillStyle = "#000000";
+				ctx.fillRect(0,0,800,500);
+				return;
+			}
 
 			ctx.drawImage ( clickables[0].image, clickables[0].xpos, clickables[0].ypos );
 
@@ -66,6 +72,21 @@
 				ctx.font = "26px DrawingWithMarkers";	
 				ctx.fillText(clickables[mouse_over_object].name + " - " + clickables[mouse_over_object].description,10,30, 786);
 
+			}
+
+			//---- show inventory if list open
+
+			if ( clickables[get_clickable_number("inventory_list") ].visible == true)
+			{
+				ctx.fillStyle = "#000000";
+				ctx.font = "26px DrawingWithMarkers";	
+				ctx.fillText("You are carrying" ,800-270 ,128+76 ,256);
+
+				for (x=0; x<inventory_list.length; ++x)
+				{
+					var cn = inventory_list[x];
+					ctx.fillText( clickables[cn].name ,800-270 ,(128+120) + x*28 ,256);
+				}
 			}
 
 		}

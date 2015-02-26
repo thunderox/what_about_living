@@ -59,6 +59,10 @@
 		add_clickable("room",rooms[current_room_number].image_file, 0,0); 
 		set_clickable_persistency ("room", true);
 
+		add_clickable("inventory_list","gfx/InventoryList.png", 800-280,128+48);
+		set_clickable_persistency ("inventory_list", true);
+		set_clickable_visibility ("inventory_list", false);
+
 		add_clickable("arrow_north","gfx/arrow_up.png", (800/2)-32, 72);
 		set_clickable_persistency ("arrow_north", true);
 		set_clickable_description ("arrow_north", "You see a way to move northward!");
@@ -91,10 +95,7 @@
 		set_clickable_persistency ("player1_panel", true);
 
 
-		add_clickable("inventory_list","gfx/InventoryList.png", 800-256,128+16);
-		set_clickable_persistency ("inventory_list", true);
-		set_clickable_visibility ("inventory_list", false);
-
+		set_up_current_room();
 		add_characters();
 		add_objects();
 

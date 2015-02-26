@@ -9,6 +9,7 @@ function new_character(name, description, image_file, room, xpos, ypos)
 
 	clickables[char_num].room = room;
 	clickables[char_num].description = description;
+	clickables[char_num].type = 1;
 
 	characters[char_number] = new character;
 	characters[char_number].name = name;
