@@ -38,13 +38,13 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 		// new_object("Samples", "There's blood in this thing? Are these the samples Dr. Failing wanted?", "", 1, 50, 50, true );
 		// new_object("Medicine", "What is this stuff I never heard of it before...", "", 3, 50, 50, true );
 		// new_object("Brain scrammer", "This is the proto machine that is going to wipe out the zombies!", "", 1, 50, 50, true );
-		new_object("Small weights", "Small training weights is this what Sam wanted?", "gfx/small_weights.png", 12, 50, 50, true );
+		new_object("Small weights", "Small training weights is this what Sam wanted?", "gfx/objects/small_weights.png", 12, 50, 50, true );
 		// new_object("Ankle weights", "Heavy weights to put on your ankles, are these what Sam wanted?", "", 13, 50, 50, true );
-		new_object("Heart rate monitor", "Wow, I'm surprised it still works, is this what Sam wanted?", "gfx/heart_monitor.png", 17, 50, 250, true );
+		new_object("Heart rate monitor", "Wow, I'm surprised it still works, is this what Sam wanted?", "gfx/objects/heart_monitor.png", 17, 50, 250, true );
 		// new_object("Exercise expander", "Oh! it's one of those stretch exapnder things, is this what Sam wanted?", "", 18, 50, 50, true );
-		new_object("Abandoned sweater", "Wow so soft...... maybe Elissa would like this?", "gfx/abandoned_sweater.png", 12, 50, 350, true );
-		new_object("A pile of clothes", "Were people swimming in the fountain... maybe Elissa would like this?", "gfx/a_pile_of_clothes.png", 17, 350, 150, true );
-		new_object("Forgotten underwear", "Why are these here? Maybe Elissa would like this?", "gfx/forgotten_underwear.png", 19, 500, 380, true );
+		new_object("Abandoned sweater", "Wow so soft...... maybe Elissa would like this?", "gfx/objects/abandoned_sweater.png", 12, 50, 350, true );
+		new_object("A pile of clothes", "Were people swimming in the fountain... maybe Elissa would like this?", "gfx/objects/a_pile_of_clothes.png", 17, 350, 150, true );
+		new_object("Forgotten underwear", "Why are these here? Maybe Elissa would like this?", "gfx/objects/forgotten_underwear.png", 19, 500, 380, true );
 		// new_object("Toilet paper", "A reasonable request from Jake, maybe we'll share it?", "", 19, 50, 50, true );
 		// new_object("Waste basket", "An understandable requirement from Jake, are we all that messy?", "", 19, 50, 50, true );
 		// new_object("Questionable magazine", "Well this USED to be normal, I wont question Jakes motives...!", "", 5, 50, 50, true );
