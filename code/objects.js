@@ -63,14 +63,6 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 
 
 
-
-
-
-
-
-
-
-
 //-------------------------------------------------------------------------------------------
 
 function show_objects (room_number, ctx)

@@ -89,6 +89,18 @@
 				}
 			}
 
+			//---- dialogue mode - show what character is saying and player responses -------
+	
+			if ( dialogue_mode == true )
+			{
+				ctx.fillStyle = "rgba(0,0,0, 0.75)";
+				ctx.fillRect(0,350,800,150);
+
+				ctx.fillStyle = "rgba(255,255,255, 1.0)";
+				ctx.font = "26px DrawingWithMarkers";	
+				ctx.fillText("damnit! damnit! maggots creeping and craling everywhere this isn't fair is it!",10,380, 786);
+			}
+
 		}
 
 	

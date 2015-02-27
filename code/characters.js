@@ -2,6 +2,9 @@
 function character() {; }
 var characters = [];
 var char_number = 0;
+var dialogue_mode = false;
+var dialogue_character = -1;
+
 
 function dialogue() {; }
 
@@ -12,6 +15,7 @@ function new_character(name, description, image_file, room, xpos, ypos)
 	clickables[char_num].room = room;
 	clickables[char_num].description = description;
 	clickables[char_num].type = 1;
+	clickables[char_num].character_num = char_number;
 
 	characters[char_number] = new character;
 	characters[char_number].name = name;
@@ -19,6 +23,7 @@ function new_character(name, description, image_file, room, xpos, ypos)
 	characters[char_number].room = room;
 
 	characters[char_number].dialogue = [];
+	characters[char_number].current_dialogue = 0;
 
 	char_number++;
 	

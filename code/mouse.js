@@ -17,6 +17,8 @@
 		var mx = event.pageX;
 		var my = event.pageY;
 
+		if (dialogue_mode == true && my > 350) return;
+
 		var arrow_north = get_clickable_number("arrow_north");
 		var arrow_south = get_clickable_number("arrow_south");
 		var arrow_east = get_clickable_number("arrow_east");
@@ -81,6 +83,8 @@
 		return	
 		}
 
+		// pick up object
+
 		if (mouse_over_object > get_clickable_number("player1_panel")
 			&& inventory_list.length < 8
 			&& clickables[mouse_over_object].type != 1)	
@@ -89,8 +93,21 @@
 			update_inventory_list();
 			set_up_current_room();
 			init_canvas();
-		return	
+			return	
 		}
+
+		// talk with character
+
+		if (mouse_over_object > get_clickable_number("player1_panel")
+			&& inventory_list.length < 8
+			&& clickables[mouse_over_object].type == 1)	
+		{
+			dialogue_mode = true - dialogue_mode;
+			show_canvas();
+			return	
+		}
+
+
 		
 	}
 
@@ -100,6 +117,8 @@
 	{
 		var mx = event.pageX;
 		var my = event.pageY;
+
+		if (dialogue_mode == true && my > 350) return;
 
 		current_arrow = 0;
 
