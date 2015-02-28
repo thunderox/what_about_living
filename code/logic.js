@@ -6,15 +6,15 @@
 	{
 	
 		switch (game_position)
-		
-		case 1:
-			set_character_dialogue("Dr. Failing","greeting");
-			break;
+		{
+			case 1:
+				set_character_dialogue("Dr. Failing","greeting");
+				break;
 
-
+		}
 		
 			
 	}
 
-
+n
 

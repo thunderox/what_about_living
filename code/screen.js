@@ -98,8 +98,15 @@
 
 				ctx.fillStyle = "rgba(255,255,255, 1.0)";
 				ctx.font = "26px DrawingWithMarkers";
-				var cdialogue = characters[current_character].current_dialogue
-				ctx.fillText( characters[current_character].name ,10 ,380 , 786);
+				var cn = characters[current_character].current_dialogue
+
+				if (cn > -1)
+				{
+					cdialogue = characters[current_character].dialogue[cn];
+				}
+				else cdialogue = "";
+
+				ctx.fillText( characters[current_character].name + " - " + cdialogue ,10 ,380 , 786);
 			}
 
 		}
