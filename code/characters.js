@@ -3,8 +3,7 @@ function character() {; }
 var characters = [];
 var char_number = 0;
 var dialogue_mode = false;
-var dialogue_character = -1;
-
+var current_character = -1;
 
 function dialogue() {; }
 
@@ -15,7 +14,7 @@ function new_character(name, description, image_file, room, xpos, ypos)
 	clickables[char_num].room = room;
 	clickables[char_num].description = description;
 	clickables[char_num].type = 1;
-	clickables[char_num].character_num = char_number;
+	clickables[char_num].character_number = char_number;
 
 	characters[char_number] = new character;
 	characters[char_number].name = name;
@@ -23,10 +22,9 @@ function new_character(name, description, image_file, room, xpos, ypos)
 	characters[char_number].room = room;
 
 	characters[char_number].dialogue = [];
-	characters[char_number].current_dialogue = 0;
+	characters[char_number].current_dialogue = -1;
 
 	char_number++;
-	
 }
 
 
@@ -73,6 +71,25 @@ function add_dialogue(character_name, dialogue_title, dialogue_text)
 	}
 }
 
+
+
+
+function set_character_dialogue(character_name, dialogue_title)
+{
+	for (x=0; x<characters.length; ++x)
+	{
+		if ( character_name == characters[x].name )
+		{
+			for (y=0; y<characters[x].dialogue.length; ++y)
+			{
+				if ( characters[x].dialogue[y].title == dialogue_title)
+				{
+					characters[x].current_dialogue = y;
+				}
+			}
+		}
+	}
+}
 
 
 

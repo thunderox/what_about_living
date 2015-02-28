@@ -103,6 +103,7 @@
 			&& clickables[mouse_over_object].type == 1)	
 		{
 			dialogue_mode = true - dialogue_mode;
+			current_character = clickables[mouse_over_object].character_number;
 			show_canvas();
 			return	
 		}

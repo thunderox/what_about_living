@@ -97,8 +97,9 @@
 				ctx.fillRect(0,350,800,150);
 
 				ctx.fillStyle = "rgba(255,255,255, 1.0)";
-				ctx.font = "26px DrawingWithMarkers";	
-				ctx.fillText("damnit! damnit! maggots creeping and craling everywhere this isn't fair is it!",10,380, 786);
+				ctx.font = "26px DrawingWithMarkers";
+				var cdialogue = characters[current_character].current_dialogue
+				ctx.fillText( characters[current_character].name ,10 ,380 , 786);
 			}
 
 		}
