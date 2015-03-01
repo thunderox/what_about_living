@@ -17,7 +17,18 @@
 		var mx = event.pageX;
 		var my = event.pageY;
 
-		if (dialogue_mode == true && my > 350) return;
+		if (dialogue_mode == true && my > 350)
+		{
+			current_player_response = -1;
+			if (my >= 420)
+			{
+				current_player_response = Math.floor((my-410) / 40);
+				do_game_position();
+			}
+			return;
+		}
+
+		if (dialogue_mode == true && my <= 350) dialogue_mode = false;
 
 		var arrow_north = get_clickable_number("arrow_north");
 		var arrow_south = get_clickable_number("arrow_south");
@@ -68,7 +79,16 @@
 		{
 			current_room_number = rooms[current_room_number].west;
 			set_up_current_room();
-			init_canvas();
+			init_canvas();		if (dialogue_mode == true && my > 350)
+		{
+			current_player_response = -1;
+			if (my >= 420)
+			{
+				current_player_response = Math.floor((my-410) / 40);
+				show_canvas();
+			}
+			return;
+		}
 			return;
 		}
 
@@ -102,7 +122,7 @@
 			&& inventory_list.length < 8
 			&& clickables[mouse_over_object].type == 1)	
 		{
-			dialogue_mode = true - dialogue_mode;
+			dialogue_mode = true;
 			current_character = clickables[mouse_over_object].character_number;
 			show_canvas();
 			return	
@@ -119,7 +139,16 @@
 		var mx = event.pageX;
 		var my = event.pageY;
 
-		if (dialogue_mode == true && my > 350) return;
+		if (dialogue_mode == true && my > 350)
+		{
+			current_player_response = -1;
+			if (my >= 420)
+			{
+				current_player_response = Math.floor((my-410) / 40);
+				show_canvas();
+			}
+			return;
+		}
 
 		current_arrow = 0;
 

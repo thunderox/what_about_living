@@ -1,6 +1,7 @@
 
 		var number_of_images_loaded = 0;
 		var mouse_over_object = 0;
+		
 
 		function image_loaded(cn)
 		{
@@ -61,7 +62,7 @@
 			ctx.globalAlpha = 1.0;
 
 			ctx.fillStyle = "#ffffff";
-		
+
 			if (mouse_over_object == 0)
 			{
 				ctx.font = "26px DrawingWithMarkers";
@@ -98,15 +99,24 @@
 
 				ctx.fillStyle = "rgba(255,255,255, 1.0)";
 				ctx.font = "26px DrawingWithMarkers";
-				var cn = characters[current_character].current_dialogue
 
-				if (cn > -1)
+				ctx.fillText( characters[current_character].name + " - " + characters[current_character].dialogue ,10 ,380 , 786);
+
+				ctx.font = "22px DrawingWithMarkers";	
+
+				for (x=0; x< characters[current_character].player_response.length; ++x)
 				{
-					cdialogue = characters[current_character].dialogue[cn];
-				}
-				else cdialogue = "";
+					if (current_player_response == x)
+					{
+						ctx.fillStyle = "rgba(16,0,0, 0.8)"; 
+						ctx.fillRect(10,400 + (x*40),786-10,36);
+						ctx.fillStyle = "rgba(255,100,100, 1.0)";
+					}
+						else { ctx.fillStyle = "rgba(255,255,255, 1.0)"; }
 
-				ctx.fillText( characters[current_character].name + " - " + cdialogue ,10 ,380 , 786);
+					ctx.fillText( characters[current_character].player_response[x] ,10 ,420 + (x*40) , 786);
+				}
+
 			}
 
 		}

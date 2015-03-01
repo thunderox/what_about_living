@@ -4,6 +4,7 @@ var characters = [];
 var char_number = 0;
 var dialogue_mode = false;
 var current_character = -1;
+var current_player_response = -1;
 
 function dialogue() {; }
 
@@ -21,8 +22,8 @@ function new_character(name, description, image_file, room, xpos, ypos)
 	characters[char_number].description = description;
 	characters[char_number].room = room;
 
-	characters[char_number].dialogue = [];
-	characters[char_number].current_dialogue = -1;
+	characters[char_number].dialogue = "";
+	characters[char_number].player_response = [];
 
 	char_number++;
 }
@@ -44,53 +45,46 @@ function add_characters()
 	new_character("Hilda", "A zombie", "gfx/characters/zombie_hilda.png", 0, 200, 150);
 	new_character("Holly", "A zombie", "gfx/characters/zombie_holly.png", 0, 200, 150);
 
-	//---------------------- Doctor Failing Dialogue
-
-	add_dialogue ("Dr. Failing", "greet", "Oh it's you.");
-	add_dialogue ("Dr. Failing", "greet2", "Mmm you again.");
-
-
-
 	//---------------------------------------------------
 
 }
 
 
-
-function add_dialogue(character_name, dialogue_title, dialogue_text)
+function set_character_dialogue(character_name, text)
 {
 	for (x=0; x<characters.length; ++x)
 	{
 		if ( character_name == characters[x].name )
 		{
-			var new_dialogue = new dialogue;
-			new_dialogue.title = dialogue_title;
-			new_dialogue.text = dialogue_text;
-			characters[x].dialogue.push(new_dialogue);
+			characters[x].dialogue = text;
 		}
 	}
 }
 
 
-
-
-function set_character_dialogue(character_name, dialogue_title)
+function clear_player_response(character_name)
 {
 	for (x=0; x<characters.length; ++x)
 	{
 		if ( character_name == characters[x].name )
 		{
-			for (y=0; y<characters[x].dialogue.length; ++y)
-			{
-				if ( characters[x].dialogue[y].title == dialogue_title)
-				{
-					characters[x].current_dialogue = y;
-				}
-			}
+			characters[x].player_response = [];
+			characters[x].player_response.length = 0;
 		}
 	}
 }
 
+
+function set_player_response(character_name, text)
+{
+	for (x=0; x<characters.length; ++x)
+	{
+		if ( character_name == characters[x].name )
+		{
+			characters[x].player_response.push(text);
+		}
+	}
+}
 
 
 
