@@ -95,12 +95,19 @@
 			if ( dialogue_mode == true )
 			{
 				ctx.fillStyle = "rgba(0,0,0, 0.75)";
-				ctx.fillRect(0,350,800,150);
+				ctx.fillRect(0,270,800,500-270);
 
 				ctx.fillStyle = "rgba(255,255,255, 1.0)";
-				ctx.font = "26px DrawingWithMarkers";
+				ctx.font = "24px DrawingWithMarkers";
 
-				ctx.fillText( characters[current_character].name + " - " + characters[current_character].dialogue ,10 ,380 , 786);
+				var char_text = characters[current_character].dialogue.split(":");
+
+				char_text[0] = characters[current_character].name + " - " + char_text[0];
+
+				for (x=0; x<char_text.length; ++x)
+				{
+					ctx.fillText( char_text[x] ,10 ,300 + (x*24) , 786);
+				}		
 
 				ctx.font = "22px DrawingWithMarkers";	
 

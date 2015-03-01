@@ -10,9 +10,11 @@
 		switch (game_position)
 		{
 			case 1:
-				set_character_dialogue("Dr. Failing","Oh it's you.");
-				set_player_response("Dr. Failing", "yes, see ya!");
-				set_player_response("Dr. Failing", "You horrible witch!");
+				set_character_dialogue("Dr. Failing","Oh it's you, well then i will tell you what i have found, You seem to be:suffering from something new its not quite Amnesia...you seem to be just fine only...:your brain pattern is like that of a completely different person hmmm fetch me:a special medicine from the Hospital Ward..");
+
+
+				set_player_response("Dr. Failing", "Tell Dr. Failing 'yes okay I will try to find it for you!'");
+				set_player_response("Dr. Failing", "Tell Dr. Failing 'You horrible witch!' and leave angrily.");
 
 				set_character_dialogue("Sam","Hi!");
 
