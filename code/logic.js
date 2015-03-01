@@ -32,7 +32,6 @@
 	}
 
 
-//-------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------
 
@@ -44,7 +43,8 @@
 		switch (game_position)
 		{
 			case 1:
-				if ( characters[current_character].name == "Amy")
+				if ( characters[current_character].name == "Amy"
+					&& characters[current_character].dialogue == "Fetch me a cupcake!!!!")
 				{
 					if (current_player_response == 0)
 					{
@@ -54,7 +54,37 @@
 						current_player_response = -1;
 						show_canvas();
 					}
+
+					if (current_player_response == 1)
+					{
+						dialogue_mode = false;
+						show_canvas();
+					}
 				}
+
+				if ( characters[current_character].name == "Amy"
+					&& characters[current_character].dialogue == "Awwh thanks pleb.")
+				{
+					if (current_player_response == 0)
+					{
+						set_character_dialogue("Amy","Hiha.. well. On your way!");
+						clear_player_response("Amy");
+						set_player_response("Amy","Okay.");
+						current_player_response = -1;
+						show_canvas();
+					}
+				}
+
+				if ( characters[current_character].name == "Amy"
+					&& characters[current_character].dialogue == "Hiha.. well. On your way!")
+				{
+					if (current_player_response == 0)
+					{
+						dialogue_mode = false;
+						show_canvas();
+					}
+				}
+
 				break;
 
 		}
