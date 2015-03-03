@@ -45,14 +45,14 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 		new_object("Abandoned sweater", "Wow so soft...... maybe Elissa would like this?", "gfx/objects/abandoned_sweater.png", 12, 50, 350, true );
 		new_object("A pile of clothes", "Were people swimming in the fountain... maybe Elissa would like this?", "gfx/objects/a_pile_of_clothes.png", 17, 350, 150, true );
 		new_object("Forgotten underwear", "Why are these here? Maybe Elissa would like this?", "gfx/objects/forgotten_underwear.png", 19, 500, 380, true );
-		// new_object("Toilet paper", "A reasonable request from Jake, maybe we'll share it?", "", 19, 50, 50, true );
-		// new_object("Waste basket", "An understandable requirement from Jake, are we all that messy?", "", 19, 50, 50, true );
-		// new_object("Questionable magazine", "Well this USED to be normal, I wont question Jakes motives...!", "", 5, 50, 50, true );
-		// new_object("Vaseline", "Actually can you oil a gun with this??..What's Jake want it for dry skin isn't really a concern right now.", "", 4, 50, 50, true );
-		// new_object("A single latex glove", "Ah! A rubber glove why only one? Jakes weird sometimes.", "", -8, 50, 50, true );
-		// new_object("A recording of pigs squealing", "Why did Dr. Failing even have this??!? AND WHY DOES JAKE WANT IT??*!?", "", -7, 50, 50, true );
+		new_object("Toilet paper", "A reasonable request from Jake, maybe we'll share it?", "gfx/objects/toilet_paper.png", 19, 640, 200, true );
+		new_object("Waste basket", "An understandable requirement from Jake, are we all that messy?", "gfx/objects/waste_basket.png", 19, 200, 380, true );
+		new_object("Questionable magazine", "Well this USED to be normal, I wont question Jakes motives...!", "gfx/objects/questionable_magazine.png", 5, 550, 200, true );
+		new_object("Vaseline", "Actually can you oil a gun with this??..What's Jake want it for dry skin isn't really a concern right now.", "gfx/objects/vaseline.png", 4, 260, 320, true );
+		new_object("A single latex glove", "Ah! A rubber glove why only one? Jakes weird sometimes.", "gfx/objects/latex_glove.png", -8, 50, 50, true );
+		new_object("A recording of pigs squealing", "Why did Dr. Failing even have this??!? AND WHY DOES JAKE WANT IT??*!?", "gfx/objects/squealing_pig_cassette.png", -7, 50, 50, true );
 		// new_object("Goody package", "Assorted foods and luxury items for your hard work.", "", -8, 50, 50, true );
-		// new_object("A photograph of yourself", "I'm glad they kept this picture, what a weird request from Jake!", "", 1, 50, 50, true );
+		new_object("A photograph of yourself", "I'm glad they kept this picture, what a weird request from Jake!", "gfx/objects/photograph_of_you.png", 1, 50, 50, true );
 		// new_object("Cure research notes", "Dr. Failing was working on this for ages, I hope it works!", "", 9, 50, 50, true );
 
 	}

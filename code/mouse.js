@@ -28,7 +28,11 @@
 			return;
 		}
 
-		if (dialogue_mode == true && my <= 350) dialogue_mode = false;
+		if (dialogue_mode == true && my <= 350)
+		{
+			dialogue_mode = false;
+			return;
+		}
 
 		var arrow_north = get_clickable_number("arrow_north");
 		var arrow_south = get_clickable_number("arrow_south");
@@ -119,7 +123,6 @@
 		// talk with character
 
 		if (mouse_over_object > get_clickable_number("player1_panel")
-			&& inventory_list.length < 8
 			&& clickables[mouse_over_object].type == 1)	
 		{
 			dialogue_mode = true;
