@@ -25,23 +25,23 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 	function add_objects()
 	{
 
-		// new_object("Tin of food", "A tin of food could be useful", "", 14, 50, 50, true );
-		// new_object("Water bottle", "A bottle of water", "", 14, 50, 50, true );
-		// new_object("Can of pop", "Awesome! an unopened can of pop.", "", 14, 50, 50, true );
+		new_object("Tin of food", "A tin of food could be useful", "gfx/objects/tin_of_food.png", 14, 50, 50, true );
+		new_object("Water bottle", "A bottle of water", "gfx/objects/water_bottle.png", 14, 50, 50, true );
+		new_object("Can of pop", "Awesome! an unopened can of pop.", "gfx/objects/can_of_pop.png", 14, 50, 50, true );
 		// new_object("Boxed food", "huh? We do have a microwave right?", "", 14, 50, 50, true );
-		// new_object("Tooth brushes", "A new box of toothbrushes!", "", 14, 50, 50, true );
+		new_object("Tooth brushes", "A new box of toothbrushes!", "gfx/objects/toothbrushes.png", 14, 50, 50, true );
 		// new_object("Box of cookies", "COOKIES!!! All MINE!!!!!", "", 14, 50, 50, true );
-		// new_object("Gold locket", "A locket, it looks cheap but anything like this is a treasure now..I could give this as a gift to a dear friend.", "", 14, 50, 50, true );
-		// new_object("Cute Bunny plushy", "zomg!! I love this I bet this would be a cute gift for a dear friend. ", "", 14, 50, 50, true );
-		// new_object("Snow globe", "Mhh! This is nice I wonder if a dear friend would like this for their birthday.", "", 14, 50, 50, true );
-		// new_object("Important papers", "These papers are the cure notes Dr. Failing wanted!", "", 1, 50, 50, true );
+		new_object("Gold locket", "A locket, it looks cheap but anything like this is a treasure now..I could give this as a gift to a dear friend.", "gfx/objects/gold_locket.png", 14, 50, 50, true );
+		new_object("Cute Bunny plushy", "zomg!! I love this I bet this would be a cute gift for a dear friend. ", "gfx/objects/cute_bunny_plushy.png", 14, 50, 50, true );
+		new_object("Snow globe", "Mhh! This is nice I wonder if a dear friend would like this for their birthday.", "gfx/objects/snow_globe.png", 14, 50, 50, true );
+		new_object("Important papers", "These papers are the cure notes Dr. Failing wanted!", "gfx/objects/important_papers.png", 1, 50, 50, true );
 		// new_object("Samples", "There's blood in this thing? Are these the samples Dr. Failing wanted?", "", 1, 50, 50, true );
 		// new_object("Medicine", "What is this stuff I never heard of it before...", "", 3, 50, 50, true );
-		// new_object("Brain scrammer", "This is the proto machine that is going to wipe out the zombies!", "", 1, 50, 50, true );
+		new_object("Brain scrammer", "This is the proto machine that is going to wipe out the zombies!", "gfx/objects/brain_scrammer.png", 1, 50, 50, true );
 		new_object("Small weights", "Small training weights is this what Sam wanted?", "gfx/objects/small_weights.png", 12, 50, 50, true );
-		// new_object("Ankle weights", "Heavy weights to put on your ankles, are these what Sam wanted?", "", 13, 50, 50, true );
+		new_object("Ankle weights", "Heavy weights to put on your ankles, are these what Sam wanted?", "gfx/objects/ankle_weights.png", 13, 50, 50, true );
 		new_object("Heart rate monitor", "Wow, I'm surprised it still works, is this what Sam wanted?", "gfx/objects/heart_monitor.png", 17, 50, 250, true );
-		// new_object("Exercise expander", "Oh! it's one of those stretch exapnder things, is this what Sam wanted?", "", 18, 50, 50, true );
+		new_object("Excercise expander", "Oh! it's one of those stretch exapnder things, is this what Sam wanted?", "gfx/objects/excercise_expanders.png", 18, 50, 50, true );
 		new_object("Abandoned sweater", "Wow so soft...... maybe Elissa would like this?", "gfx/objects/abandoned_sweater.png", 12, 50, 350, true );
 		new_object("A pile of clothes", "Were people swimming in the fountain... maybe Elissa would like this?", "gfx/objects/a_pile_of_clothes.png", 17, 350, 150, true );
 		new_object("Forgotten underwear", "Why are these here? Maybe Elissa would like this?", "gfx/objects/forgotten_underwear.png", 19, 500, 380, true );
@@ -51,9 +51,9 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 		new_object("Vaseline", "Actually can you oil a gun with this??..What's Jake want it for dry skin isn't really a concern right now.", "gfx/objects/vaseline.png", 4, 260, 320, true );
 		new_object("A single latex glove", "Ah! A rubber glove why only one? Jakes weird sometimes.", "gfx/objects/latex_glove.png", -8, 50, 50, true );
 		new_object("A recording of pigs squealing", "Why did Dr. Failing even have this??!? AND WHY DOES JAKE WANT IT??*!?", "gfx/objects/squealing_pig_cassette.png", -7, 50, 50, true );
-		// new_object("Goody package", "Assorted foods and luxury items for your hard work.", "", -8, 50, 50, true );
+		new_object("Goody package", "Assorted foods and luxury items for your hard work.", "gfx/objects/bag_of_goodies.png", -8, 50, 50, true );
 		new_object("A photograph of yourself", "I'm glad they kept this picture, what a weird request from Jake!", "gfx/objects/photograph_of_you.png", 1, 50, 50, true );
-		// new_object("Cure research notes", "Dr. Failing was working on this for ages, I hope it works!", "", 9, 50, 50, true );
+		new_object("Cure research notes", "Dr. Failing was working on this for ages, I hope it works!", "gfx/objects/cure_notes.png", 9, 50, 50, true );
 
 	}
 
