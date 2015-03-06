@@ -34,6 +34,24 @@
 			return;
 		}
 
+		//---- clicked object in inventory list? 
+
+		if ( clickables[get_clickable_number("inventory_list") ].visible == true)
+		{
+
+			inventory_list_object_clicked = -1;
+			var il = clickables[get_clickable_number("inventory_list") ];
+			if (mx >= il.xpos && mx <= il.xpos + il.width
+				&& my >= il.ypos+(28*2) && my <= il.ypos + il.height)
+			{
+				inventory_list_object_clicked =  Math.floor((my-il.ypos-(28*2)) / 28);
+
+				if (inventory_list_object_hover > inventory_list.length) { inventory_list_object_clicked = -1; }
+				return;
+			}
+
+		}
+
 		var arrow_north = get_clickable_number("arrow_north");
 		var arrow_south = get_clickable_number("arrow_south");
 		var arrow_east = get_clickable_number("arrow_east");
@@ -153,9 +171,29 @@
 			return;
 		}
 
+		//---- show inventory if list open
+
+		if ( clickables[get_clickable_number("inventory_list") ].visible == true)
+		{
+			inventory_list_object_hover = -1;
+
+			var il = clickables[get_clickable_number("inventory_list") ];
+			if (mx >= il.xpos && mx <= il.xpos + il.width
+				&& my >= il.ypos+(28*2) && my <= il.ypos + il.height)
+			{
+				inventory_list_object_hover =  Math.floor((my-il.ypos-(28*2)) / 28);
+
+				if (inventory_list_object_hover > inventory_list.length) { inventory_list_object_hover = -1; }
+
+				return;
+
+			}
+
+		}
+
 		current_arrow = 0;
 
-		// mouse clicked up arrow to go north
+		// mouse hovered up arrow to go north
 
 		if (mx >= clickables[1].xpos && mx <= clickables[1].xpos + clickables[1].width
 			&& my >= clickables[1].ypos && my <= clickables[1].ypos + clickables[1].height
@@ -164,7 +202,7 @@
 			current_arrow = 1;
 		}
 
-		// mouse clicked up arrow to go south
+		// mouse hovered up arrow to go south
 
 		if (mx >= clickables[2].xpos && mx <= clickables[2].xpos + clickables[2].width
 			&& my >= clickables[2].ypos && my <= clickables[2].ypos + clickables[2].height
@@ -173,7 +211,7 @@
 			current_arrow = 2;
 		}
 
-		// mouse clicked up arrow to go east
+		// mouse hovered up arrow to go east
 
 		if (mx >= clickables[3].xpos && mx <= clickables[3].xpos + clickables[3].width
 			 && my >= clickables[3].ypos && clickables[3].ypos + clickables[3].height
@@ -182,7 +220,7 @@
 			current_arrow = 3;
 		}
 
-		// mouse clicked up arrow to go west
+		// mouse hovered up arrow to go west
 
 		if (mx >= clickables[4].xpos && mx <= clickables[4].xpos + clickables[4].width
 			&& my >= clickables[4].ypos && my <= clickables[4].ypos + clickables[4].height
@@ -205,7 +243,10 @@
 				mouse_over_object = cn;	
 			}
 		}
-		
+
+
+
+
 	}
 
 

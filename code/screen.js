@@ -1,7 +1,8 @@
 
 		var number_of_images_loaded = 0;
 		var mouse_over_object = 0;
-		
+
+
 
 		function image_loaded(cn)
 		{
@@ -85,7 +86,16 @@
 
 				for (x=0; x<inventory_list.length; ++x)
 				{
+					if (x == inventory_list_object_hover)
+					{
+						ctx.fillStyle = "rgba(0,0,0, 0.6)";
+						ctx.fillRect(800-280,(100+128) + x*28, 250,28);
+						ctx.fillStyle = "rgba(255,255,255, 1.0)";
+					}
+					else{ ctx.fillStyle = "rgba(0,0,0, 1.0)"; }
+
 					var cn = inventory_list[x];
+					
 					ctx.fillText( clickables[cn].name ,800-270 ,(128+120) + x*28 ,256);
 				}
 			}

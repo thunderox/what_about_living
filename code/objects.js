@@ -2,6 +2,8 @@
 function object() {; }
 var objects = [];
 var object_number = 0;
+var inventory_list_object_hover = -1;
+var inventory_list_object_clicked = -1;
 
 function new_object(name, description, image_file, room, xpos, ypos, can_be_carried)
 {
@@ -52,7 +54,7 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 		new_object("A single latex glove", "Ah! A rubber glove why only one? Jakes weird sometimes.", "gfx/objects/latex_glove.png", -8, 50, 50, true );
 		new_object("A recording of pigs squealing", "Why did Dr. Failing even have this??!? AND WHY DOES JAKE WANT IT??*!?", "gfx/objects/squealing_pig_cassette.png", -7, 50, 50, true );
 		new_object("Goody package", "Assorted foods and luxury items for your hard work.", "gfx/objects/bag_of_goodies.png", -8, 50, 50, true );
-		new_object("A photograph of yourself", "I'm glad they kept this picture, what a weird request from Jake!", "gfx/objects/photograph_of_you.png", 9, 50, 50, true );
+		new_object("A photograph of you", "I'm glad they kept this picture, what a weird request from Jake!", "gfx/objects/photograph_of_you.png", 9, 50, 50, true );
 		new_object("Cure research notes", "Dr. Failing was working on this for ages, I hope it works!", "gfx/objects/cure_notes.png", 3, 200, 160, true );
 
 	}
