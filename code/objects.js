@@ -10,6 +10,7 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 	var obj_num = add_clickable(name, image_file, xpos, ypos);
 	clickables[obj_num].room = room;
 	clickables[obj_num].description = description;
+	clickables[obj_num].object_number = object_number;
 
 	objects[object_number] = new object;
 	objects[object_number].description = description;
@@ -69,6 +70,8 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 
 function show_objects (room_number, ctx)
 {
+
+
 	for (obj=0; obj<object_number; obj++)
 	{
 		if (objects[obj].room == room_number)

@@ -120,7 +120,8 @@
 		for (x=0; x<number_of_clickables; ++x)
 		{
 			if ( clickables[x].room == current_room_number || 	
-				clickables[x].persist == true)
+				clickables[x].persist == true ||
+				x == inventory_list[inventory_list_object_clicked] )
 			{
 				 if (clickables[x].visible == true) { visible_clickables.push(x); }	
 			}

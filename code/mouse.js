@@ -34,6 +34,21 @@
 			return;
 		}
 
+		//---- Object dropped or given
+
+		if (inventory_list_object_clicked != -1)
+		{
+			clickables[ inventory_list[inventory_list_object_clicked] ].room = current_room_number;
+
+			var object_num = clickables[ inventory_list[inventory_list_object_clicked] ].object_number;
+			objects[object_num].room = current_room_number;
+
+			inventory_list_object_clicked = -1;
+			update_inventory_list();
+			init_canvas();
+			return;
+		}
+
 		//---- clicked object in inventory list? 
 
 		if ( clickables[get_clickable_number("inventory_list") ].visible == true)
@@ -47,6 +62,14 @@
 				inventory_list_object_clicked =  Math.floor((my-il.ypos-(28*2)) / 28);
 
 				if (inventory_list_object_hover > inventory_list.length) { inventory_list_object_clicked = -1; }
+				clickables[get_clickable_number("inventory_list") ].visible = false;
+
+				clickables[ inventory_list[inventory_list_object_clicked] ].xpos = mx
+					- (clickables[ inventory_list[inventory_list_object_clicked] ].width / 2);
+				clickables[ inventory_list[inventory_list_object_clicked] ].ypos = my
+					- (clickables[ inventory_list[inventory_list_object_clicked] ].height / 2);
+
+				init_canvas();
 				return;
 			}
 
@@ -168,6 +191,19 @@
 				current_player_response = Math.floor((my-410) / 40);
 				show_canvas();
 			}
+			return;
+		}
+
+		//---- Object is to be dropped or given
+
+		if (inventory_list_object_clicked != -1)
+		{
+			clickables[ inventory_list[inventory_list_object_clicked] ].xpos = mx
+				- (clickables[ inventory_list[inventory_list_object_clicked] ].width / 2);
+			clickables[ inventory_list[inventory_list_object_clicked] ].ypos = my
+				- (clickables[ inventory_list[inventory_list_object_clicked] ].height / 2);
+
+			show_canvas();
 			return;
 		}
 
