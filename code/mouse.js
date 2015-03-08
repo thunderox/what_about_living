@@ -9,14 +9,21 @@
 	c.addEventListener("mousemove", doMouseMove, false);
 
 
-
+//  ----------------------------------------------------------------------------
 //  --------------------- Mouse down -------------------------------------------
+//  ----------------------------------------------------------------------------
 
 	function doMouseDown(event)
 	{
 		var mx = event.pageX;
 		var my = event.pageY;
 
+		if (notification_string != "")
+		{
+			notification_string = "";
+			show_canvas();
+			return;
+		}
 		if (dialogue_mode == true && my > 350)
 		{
 			current_player_response = -1;
@@ -34,14 +41,35 @@
 			return;
 		}
 
+
+
 		//---- Object dropped or given
 
 		if (inventory_list_object_clicked != -1)
 		{
-			clickables[ inventory_list[inventory_list_object_clicked] ].room = current_room_number;
-
 			var object_num = clickables[ inventory_list[inventory_list_object_clicked] ].object_number;
+
+			// default to dropping object in the room..........
+			clickables[ inventory_list[inventory_list_object_clicked] ].room = current_room_number;
 			objects[object_num].room = current_room_number;
+
+			// but have is there a character under the mouse pointer? give it to them instead
+			for (x=0; x<visible_clickables.length; ++x)
+			{
+				cn = visible_clickables[x];
+
+				if (mx >= clickables[cn].xpos && mx <= clickables[cn].xpos + clickables[cn].width
+					&& my >= clickables[cn].ypos && my <= clickables[cn].ypos + clickables[cn].height
+						&& clickables[cn].name != "room"
+							&& clickables[cn].name != "player1_panel")
+				{	
+					if (clickables[cn].type == 1)	
+					{
+						give_object_to_character( clickables[cn].name, clickables[ inventory_list[inventory_list_object_clicked] ].name);
+						
+					}
+				}
+			}
 
 			inventory_list_object_clicked = -1;
 			update_inventory_list();
@@ -65,17 +93,18 @@
 				else
 				{
 					
-					console.log (inventory_list[inventory_list_object_clicked]);
 					clickables[ inventory_list[inventory_list_object_clicked] ].xpos = mx
 						- (clickables[ inventory_list[inventory_list_object_clicked] ].width / 2);
 					clickables[ inventory_list[inventory_list_object_clicked] ].ypos = my
 						- (clickables[ inventory_list[inventory_list_object_clicked] ].height / 2);
+					clickables[get_clickable_number("inventory_list") ].visible = false;
 				}
-				clickables[get_clickable_number("inventory_list") ].visible = false;
+
 
 				init_canvas();
 				return;
 			}
+			else { clickables[get_clickable_number("inventory_list") ].visible = false; init_canvas(); }
 
 		}
 
@@ -176,11 +205,17 @@
 			return	
 		}
 
-
-		
 	}
 
+
+
+
+
+
+
+//  ----------------------------------------------------------------------------
 //  --------------------- Mouse Move -------------------------------------------
+//  ----------------------------------------------------------------------------
 
 	function doMouseMove(event)
 	{
@@ -198,6 +233,8 @@
 			return;
 		}
 
+
+
 		//---- Object is to be dropped or given
 
 		if (inventory_list_object_clicked != -1)
@@ -206,7 +243,7 @@
 				- (clickables[ inventory_list[inventory_list_object_clicked] ].width / 2);
 			clickables[ inventory_list[inventory_list_object_clicked] ].ypos = my
 				- (clickables[ inventory_list[inventory_list_object_clicked] ].height / 2);
-
+			mouse_over_object = inventory_list[inventory_list_object_clicked];
 			show_canvas();
 			return;
 		}
@@ -269,6 +306,20 @@
 			current_arrow = 4;
 		}
 
+
+		//------ Hover over object or character
+		for (x=0; x<visible_clickables.length; ++x)
+		{
+			cn = visible_clickables[x];
+
+			if (mx >= clickables[cn].xpos && mx <= clickables[cn].xpos + clickables[cn].width
+				&& my >= clickables[cn].ypos && my <= clickables[cn].ypos + clickables[cn].height
+					&& clickables[cn].name != "room"
+						&& clickables[cn].name != "player1_panel")
+			{	
+				mouse_over_object = cn;	
+			}
+		}
 		mouse_over_object = 0;
 
 		for (x=0; x<visible_clickables.length; ++x)
@@ -283,9 +334,6 @@
 				mouse_over_object = cn;	
 			}
 		}
-
-
-
 
 	}
 

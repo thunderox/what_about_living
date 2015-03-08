@@ -1,7 +1,7 @@
 
 		var number_of_images_loaded = 0;
 		var mouse_over_object = 0;
-
+		var notification_string = "";
 
 
 		function image_loaded(cn)
@@ -44,9 +44,24 @@
 
 			ctx.drawImage ( clickables[0].image, clickables[0].xpos, clickables[0].ypos );
 
+			var object_2_be_dropped = -1;
+
+			if (inventory_list_object_clicked !=-1)
+			{	
+				object_2_be_dropped = inventory_list[inventory_list_object_clicked];
+			}
+
 			for (x=visible_clickables.length-1; x>0; --x)
 			{	
 				cn = visible_clickables[x];
+				ctx.drawImage ( clickables[cn].image, clickables[cn].xpos, clickables[cn].ypos );
+				clickables[cn].width = clickables[cn].image.width;
+				clickables[cn].height = clickables[cn].image.height;
+			}
+
+			if (object_2_be_dropped !=-1)
+			{
+				cn = object_2_be_dropped;
 				ctx.drawImage ( clickables[cn].image, clickables[cn].xpos, clickables[cn].ypos );
 				clickables[cn].width = clickables[cn].image.width;
 				clickables[cn].height = clickables[cn].image.height;
@@ -72,8 +87,8 @@
 			else
 			{
 				ctx.font = "26px DrawingWithMarkers";	
-				ctx.fillText(clickables[mouse_over_object].name + " - " + clickables[mouse_over_object].description,10,30, 786);
-
+				ctx.fillText(clickables[mouse_over_object].name + " - " + clickables[mouse_over_object].description,10,30, 786);	
+	
 			}
 
 			//---- show inventory if list open
@@ -98,6 +113,18 @@
 					
 					ctx.fillText( clickables[cn].name ,800-270 ,(128+120) + x*28 ,256);
 				}
+			}
+
+			//----- notification message to be displayed -----------------------------------
+
+			if (notification_string != "")
+			{
+				ctx.fillStyle = "rgba(0,0,0, 0.75)";
+				ctx.fillRect(0,270,800,500-270);
+				ctx.font = "26px DrawingWithMarkers";	
+				ctx.fillStyle = "rgba(255,255,255, 1.0)"; 
+				ctx.fillText(notification_string,10 ,300, 786);	
+
 			}
 
 			//---- dialogue mode - show what character is saying and player responses -------

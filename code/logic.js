@@ -93,3 +93,49 @@
 	}
 
 
+
+
+
+//-------------------------------------------------------------------------------------------------------
+// ----------------- Give object to character
+
+	function give_object_to_character(character_name, object_name)
+	{
+		var object_number = get_clickable_number(object_name);
+		var character_number = get_clickable_number(character_name);
+
+		clickables[object_number].room = -clickables[character_number].character_number; 
+		notification_string =  object_name + " given to " + character_name;
+
+		var rand = Math.floor((Math.random() * 3) + 1);
+		clickables[object_number].room = -1;
+
+		switch (rand)
+		{
+			case 1:
+				notification_string = "I'm not sure " + character_name + " wants " + object_name + " right now!";
+				break;
+
+			case 2:
+				notification_string = "I'm sure " + character_name + " has no use for " + object_name + " at the moment.";
+				break;
+
+			case 3:
+				var gender = characters[clickables[character_number].character_number].gender;
+				notification_string = character_name + " looks at " + object_name + " and shakes";
+				if (gender == "male") { notification_string += " his head."; }
+				if (gender == "female") { notification_string += " her head."; }
+				break;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
