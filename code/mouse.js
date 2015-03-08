@@ -61,13 +61,17 @@
 			{
 				inventory_list_object_clicked =  Math.floor((my-il.ypos-(28*2)) / 28);
 
-				if (inventory_list_object_hover > inventory_list.length) { inventory_list_object_clicked = -1; }
+				if (inventory_list_object_clicked > inventory_list.length-1){ inventory_list_object_clicked = -1; }
+				else
+				{
+					
+					console.log (inventory_list[inventory_list_object_clicked]);
+					clickables[ inventory_list[inventory_list_object_clicked] ].xpos = mx
+						- (clickables[ inventory_list[inventory_list_object_clicked] ].width / 2);
+					clickables[ inventory_list[inventory_list_object_clicked] ].ypos = my
+						- (clickables[ inventory_list[inventory_list_object_clicked] ].height / 2);
+				}
 				clickables[get_clickable_number("inventory_list") ].visible = false;
-
-				clickables[ inventory_list[inventory_list_object_clicked] ].xpos = mx
-					- (clickables[ inventory_list[inventory_list_object_clicked] ].width / 2);
-				clickables[ inventory_list[inventory_list_object_clicked] ].ypos = my
-					- (clickables[ inventory_list[inventory_list_object_clicked] ].height / 2);
 
 				init_canvas();
 				return;
