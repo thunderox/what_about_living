@@ -22,9 +22,12 @@ function new_character(name, description, image_file, gender, room, xpos, ypos)
 	characters[char_number].description = description;
 	characters[char_number].room = room;
 	characters[char_number].gender = gender;
+	characters[char_number].clickable_number = char_num;
 
 	characters[char_number].dialogue = "";
 	characters[char_number].player_response = [];
+
+	characters[char_number].position = "";
 
 	char_number++;
 }
@@ -34,16 +37,16 @@ function add_characters()
 {
 
 	new_character("Kai", "Fiercely loyal and always by your side.", "gfx/characters/character_kai.png", "male", 1, 40, 150);
-	new_character("Rain","Fiercely loyal and always by your side.", "", "female", 0, 200, 150);
+	new_character("Rain","Fiercely loyal and always by your side.", "gfx/characters/character_rain.png", "female", 6, 200, 150);
 	new_character("Amy", "Don't be fooled by her cute charm, She can be mean and a bully, and will probably leave you for dead.", "gfx/characters/character_amy.png", "female", 10, 200, 150);
 	new_character("Elissa", "Kind, sweet and caring and very friendly, sometimes overwhelmingly so!", "gfx/characters/character_elissa.png", "female", 0, 200, 150);
 	new_character("Jake", "Errr, he looks normal enough, he speaks short and to the point, quietly with a creepy undertone.", "gfx/characters/character_jake.png", "male", 9, 200, 150);
 	new_character("Sam", "Very phsyically adept, always on the go and never standing still, great in emergencies.", "gfx/characters/character_sam.png", "male", 16, 200, 150);
 	new_character("Dr. Failing", "Dr. Anna Failing is a proud genius, but her people skills need much work!", "gfx/characters/character_dr_failing.png",  "female", 11, 200, 150);
 	new_character("Dr. Elderberry", "A doctor in an hazmat suit, eccentric, humerous, often pretends to be a guard at the city gate.", "gfx/characters/character_dr_elderberry.png", "male", 20, 200, 200);
-	new_character("Claud", "A zombie, loveable in his own way", "gfx/characters/zombie_claude.png", "male", 0, 200, 150);
+	new_character("Claude", "A zombie, loveable in his own way", "gfx/characters/zombie_claude.png", "male", 0, 380, 150);
 	new_character("Drew", "A zombie", "gfx/characters/zombie_drew.png", "male", 0, 200, 150);
-	new_character("Hilda", "A zombie", "gfx/characters/zombie_hilda.png", "female", 0, 200, 150);
+	new_character("Hilda", "A zombie", "gfx/characters/zombie_hilda.png", "female", 0,20, 150);
 	new_character("Holly", "A zombie", "gfx/characters/zombie_holly.png", "female", 0, 200, 150);
 
 	//---------------------------------------------------
@@ -58,6 +61,17 @@ function set_character_dialogue(character_name, text)
 		if ( character_name == characters[x].name )
 		{
 			characters[x].dialogue = text;
+		}
+	}
+}
+
+function set_character_position(character_name, text)
+{
+	for (x=0; x<characters.length; ++x)
+	{
+		if ( character_name == characters[x].name )
+		{
+			characters[x].position = text;
 		}
 	}
 }
@@ -88,7 +102,32 @@ function set_player_response(character_name, text)
 }
 
 
+function remove_player_response(character_name, text)
+{
+	for (x=0; x<characters.length; ++x)
+	{
+		if ( character_name == characters[x].name )
+		{
+			for (y=0; y<characters[x].player_response.length; ++y)
+			{
+				if ( characters[x].player_response[y] == text)
+				{
+					characters[x].player_response.splice(y,1);
+				}
+			}
+		}
+	}
+}
 
-
-
+function move_character(character_name, room_number)
+{
+	for (x=0; x<characters.length; ++x)
+	{
+		if ( character_name == characters[x].name )
+		{
+			characters[x].room = room_number;
+			clickables[ characters[x].clickable_number ].room = room_number;
+		}
+	}
+}
 

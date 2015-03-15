@@ -10,21 +10,34 @@
 		switch (game_position)
 		{
 			case 1:
+
+				// -- DOCTOR FAILING -----------------------------------------------------------------
 				set_character_dialogue("Dr. Failing","Oh it's you, well then i will tell you what i have found, You seem to be:suffering from something new its not quite Amnesia...you seem to be just fine, only...:your brain pattern is like that of a completely different person hmmm fetch me:a special medicine from the Hospital Ward..");
 
 
 				set_player_response("Dr. Failing", "Tell Dr. Failing:- 'yes okay I will try to find it for you!' ");
 				set_player_response("Dr. Failing", "Tell Dr. Failing:- 'You horrible witch!' and leave angrily. ");
 
+				// -- SAM -----------------------------------------------------------------
 				set_character_dialogue("Sam","Hi!");
 
+				// -- KAI -----------------------------------------------------------------
 				set_character_dialogue("Kai","Hi!");
 
+				// -- JAKE -----------------------------------------------------------------
 				set_character_dialogue("Jake","Hi!");
 
+				// -- AMY -----------------------------------------------------------------
 				set_character_dialogue("Amy","Fetch me a cupcake!!!!");
 				set_player_response("Amy","Oh okay, no problem.");
 				set_player_response("Amy","No! get your own why should I.");
+
+				// -- RAIN -----------------------------------------------------------------
+				set_character_position("Rain", "intro");
+				set_character_dialogue("Rain","Hey you woke up !! About time i cant kill these for much longer,:you chose a really bad place to black out !!.");
+				set_player_response("Rain","Whaaaa..i blacked out ?");
+				set_player_response("Rain","Wait who are you and were am i ?");
+				set_player_response("Rain","Oh how long was i out !!?");
 
 				break;
 
@@ -45,6 +58,9 @@
 		switch (game_position)
 		{
 			case 1:
+
+				// -- AMY -----------------------------------------------------------------
+
 				if ( characters[current_character].name == "Amy"
 					&& characters[current_character].dialogue == "Fetch me a cupcake!!!!")
 				{
@@ -87,8 +103,105 @@
 					}
 				}
 
-				break;
+				// -- RAIN -----------------------------------------------------------------
 
+				var player_response = characters[current_character].player_response[ current_player_response ];
+
+				// You first meet Rain
+
+				if ( characters[current_character].name == "Rain"
+					&& characters[current_character].position == "intro")
+				{
+	
+
+					if (player_response == "Whaaaa..i blacked out ?")
+					{
+						remove_player_response("Rain", "Whaaaa..i blacked out ?");
+						set_character_dialogue("Rain","Yeah you went up ahead and i found you out cold...");
+						show_canvas();
+					}
+
+					if (player_response == "Wait who are you and were am i ?")
+					{
+						remove_player_response("Rain", "Wait who are you and were am i ?");
+						set_character_dialogue("Rain","Huh!!? thats a joke right?...");
+						show_canvas();
+					}
+
+					if (player_response == "Oh how long was i out !!?")
+					{
+						remove_player_response("Rain", "Oh how long was i out !!?");
+						set_character_dialogue("Rain","haha about an hour we need to go.");
+						show_canvas();
+					}
+
+					if ( characters[current_character].player_response.length == 0 )
+					{
+						set_character_position("Rain", "can't remember rain");
+						set_player_response("Rain","I must have fell...umm I dont know who you are...");
+						set_player_response("Rain","Well no I dont remember you, I'm sorry...");
+						set_player_response("Rain","AN HOUR ah wait...who are you?...");
+						break;
+					}
+				}
+
+				// You can't remember rain
+
+				if ( characters[current_character].name == "Rain"
+					&& characters[current_character].position == "can't remember rain")
+				{
+						set_character_dialogue("Rain","You dont know who i am, for real?....we need to get back:to the hideout its not safe here you can trust me for");
+						clear_player_response("Rain");
+						set_player_response("Rain","Okay.");
+						set_player_response("Rain", "No!! I dont like your face!");
+						show_canvas();
+				}
+
+				if ( characters[current_character].name == "Rain"
+					&& characters[current_character].position == "can't remember rain")
+				{
+					if ( player_response == "Okay." )
+					{
+						current_room_number = 11;
+						set_up_current_room();
+						dialogue_mode = false;
+						init_canvas();
+					}
+
+					if ( player_response == "No!! I dont like your face!" )
+					{
+
+						set_character_position("Rain", "dead");
+						move_character("Rain",-1);
+
+						rooms[current_room_number].north = 0;
+						rooms[current_room_number].south = 0;
+						rooms[current_room_number].east = 0;
+						rooms[current_room_number].west = 0;
+
+						move_character("Claude",current_room_number);
+						set_character_dialogue("Claude","Gurrrrrrrrrrgh!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
+						set_player_response("Claude","The End, Okay.");
+
+						move_character("Drew",current_room_number);
+						set_character_dialogue("Drew","Brainzzz!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
+						set_player_response("Drew","The End, Okay.");
+
+						move_character("Hilda",current_room_number);
+						set_character_dialogue("Hilda","Muurggggrr, lost my ipod. brrrrrrrrrrains!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
+						set_player_response("Hilda","The End, Okay.");
+
+						set_up_current_room();
+						dialogue_mode = false;
+
+						set_up_current_room();
+						init_canvas();
+					}
+				}
+
+				//--------------------------------------------------------------
+
+				break;
 		}
 	}
 
