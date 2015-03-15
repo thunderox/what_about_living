@@ -44,9 +44,9 @@ function new_object(name, description, image_file, room, xpos, ypos, can_be_carr
 		new_object("small weights", "Small training weights is this what Sam wanted?", "gfx/objects/small_weights.png", 17, 450, 300, true );
 		new_object("ankle weights", "Heavy weights to put on your ankles, are these what Sam wanted?", "gfx/objects/ankle_weights.png", 13, 200, 400, true );
 		new_object("heart rate monitor", "Wow, I'm surprised it still works, is this what Sam wanted?", "gfx/objects/heart_monitor.png", 17, 50, 350, true );
-		new_object("an excercise expander", "Oh! it's one of those stretch exapnder things, is this what Sam wanted?", "gfx/objects/excercise_expanders.png", 18, 630, 320, true );
-		new_object("an abandoned sweater", "Wow so soft...... maybe Elissa would like this?", "gfx/objects/abandoned_sweater.png", 12, 50, 350, true );
-		new_object("a pile of clothes", "Were people swimming in the fountain... maybe Elissa would like this?", "gfx/objects/a_pile_of_clothes.png", 12, 400, 320, true );
+		new_object("the excercise expander", "Oh! it's one of those stretch exapnder things, is this what Sam wanted?", "gfx/objects/excercise_expanders.png", 18, 630, 320, true );
+		new_object("the abandoned sweater", "Wow so soft...... maybe Elissa would like this?", "gfx/objects/abandoned_sweater.png", 12, 50, 350, true );
+		new_object("the pile of clothes", "Were people swimming in the fountain... maybe Elissa would like this?", "gfx/objects/a_pile_of_clothes.png", 12, 400, 320, true );
 		new_object("the forgotten underwear", "Why are these here? Maybe Elissa would like this?", "gfx/objects/forgotten_underwear.png", 19, 500, 380, true );
 		new_object("toilet paper", "A reasonable request from Jake, maybe we'll share it?", "gfx/objects/toilet_paper.png", 19, 640, 200, true );
 		new_object("a waste basket", "An understandable requirement from Jake, are we all that messy?", "gfx/objects/waste_basket.png", 19, 200, 380, true );

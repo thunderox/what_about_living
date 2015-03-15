@@ -34,10 +34,10 @@
 
 				// -- RAIN -----------------------------------------------------------------
 				set_character_position("Rain", "intro");
-				set_character_dialogue("Rain","Hey you woke up !! About time i cant kill these for much longer,:you chose a really bad place to black out !!.");
-				set_player_response("Rain","Whaaaa..i blacked out ?");
-				set_player_response("Rain","Wait who are you and were am i ?");
-				set_player_response("Rain","Oh how long was i out !!?");
+				set_character_dialogue("Rain","Hey you woke up !! About time, I cant kill these for much longer,:you chose a really bad place to black out !!.");
+				set_player_response("Rain","Whaaaa..I blacked out?");
+				set_player_response("Rain","Wait! Who are you and where am I?");
+				set_player_response("Rain","Oh how long was I out!!?");
 
 				break;
 
@@ -114,23 +114,23 @@
 				{
 	
 
-					if (player_response == "Whaaaa..i blacked out ?")
+					if (player_response == "Whaaaa..I blacked out?")
 					{
-						remove_player_response("Rain", "Whaaaa..i blacked out ?");
+						remove_player_response("Rain", "Whaaaa..I blacked out?");
 						set_character_dialogue("Rain","Yeah you went up ahead and i found you out cold...");
 						show_canvas();
 					}
 
-					if (player_response == "Wait who are you and were am i ?")
+					if (player_response == "Wait! Who are you and where am I?")
 					{
-						remove_player_response("Rain", "Wait who are you and were am i ?");
+						remove_player_response("Rain", "Wait! Who are you and where am I?");
 						set_character_dialogue("Rain","Huh!!? thats a joke right?...");
 						show_canvas();
 					}
 
-					if (player_response == "Oh how long was i out !!?")
+					if (player_response == "Oh how long was I out!!?")
 					{
-						remove_player_response("Rain", "Oh how long was i out !!?");
+						remove_player_response("Rain", "Oh how long was I out!!?");
 						set_character_dialogue("Rain","haha about an hour we need to go.");
 						show_canvas();
 					}
@@ -150,7 +150,7 @@
 				if ( characters[current_character].name == "Rain"
 					&& characters[current_character].position == "can't remember rain")
 				{
-						set_character_dialogue("Rain","You dont know who i am, for real?....we need to get back:to the hideout its not safe here you can trust me for");
+						set_character_dialogue("Rain","You dont know who i am, for real?....we need to get back:to the hideout, it's not safe here you can trust me for now okay?,:I'll explain when we get there.");
 						clear_player_response("Rain");
 						set_player_response("Rain","Okay.");
 						set_player_response("Rain", "No!! I dont like your face!");
@@ -162,33 +162,39 @@
 				{
 					if ( player_response == "Okay." )
 					{
+						move_character("Rain",11, 500, 150);
+						characters[current_character].position = "rain back at the hideout";
+						set_character_dialogue("Rain","Okay if you really don't remember you should:go talk to our group and see if it helps.");
+						clear_player_response("Rain");
+						set_player_response("Rain","Okay seems a good idea.");
 						current_room_number = 11;
 						set_up_current_room();
 						dialogue_mode = false;
 						init_canvas();
+						break;
 					}
 
 					if ( player_response == "No!! I dont like your face!" )
 					{
 
 						set_character_position("Rain", "dead");
-						move_character("Rain",-1);
+						move_character("Rain",-1, 150, 150);
 
 						rooms[current_room_number].north = 0;
 						rooms[current_room_number].south = 0;
 						rooms[current_room_number].east = 0;
 						rooms[current_room_number].west = 0;
 
-						move_character("Claude",current_room_number);
+						move_character("Claude",current_room_number, 380, 150);
 						set_character_dialogue("Claude","Gurrrrrrrrrrgh!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
 						set_player_response("Claude","The End, Okay.");
 
-						move_character("Drew",current_room_number);
+						move_character("Drew",current_room_number, 200, 150);
 						set_character_dialogue("Drew","Brainzzz!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
 						set_player_response("Drew","The End, Okay.");
 
-						move_character("Hilda",current_room_number);
-						set_character_dialogue("Hilda","Muurggggrr, lost my ipod. brrrrrrrrrrains!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
+						move_character("Hilda",current_room_number, 20, 150);
+						set_character_dialogue("Hilda","Muurggggrr, lost my mp3 playe........brrrrrrrrrrains!::You were eaten by a ravenus hord of hungry zombies your friend also died:trying to save you, or maybe she ran off we will never know.");
 						set_player_response("Hilda","The End, Okay.");
 
 						set_up_current_room();
@@ -199,6 +205,15 @@
 					}
 				}
 
+				if ( characters[current_character].name == "Rain"
+					&& characters[current_character].position == "rain back at the hideout"
+					&& player_response == "Okay seems a good idea.")
+				{
+						dialogue_mode = false;
+						show_canvas();
+						break;
+				}
+
 				//--------------------------------------------------------------
 
 				break;
@@ -206,41 +221,6 @@
 	}
 
 
-
-
-
-//-------------------------------------------------------------------------------------------------------
-// ----------------- Give object to character
-
-	function give_object_to_character(character_name, object_name)
-	{
-		var object_number = get_clickable_number(object_name);
-		var character_number = get_clickable_number(character_name);
-
-		clickables[object_number].room = -clickables[character_number].character_number; 
-		notification_string =  object_name + " given to " + character_name;
-
-		var rand = Math.floor((Math.random() * 3) + 1);
-		clickables[object_number].room = -1;
-
-		switch (rand)
-		{
-			case 1:
-				notification_string = "I'm not sure " + character_name + " wants " + object_name + " right now!";
-				break;
-
-			case 2:
-				notification_string = "I'm sure " + character_name + " has no use for " + object_name + " at the moment.";
-				break;
-
-			case 3:
-				var gender = characters[clickables[character_number].character_number].gender;
-				notification_string = character_name + " looks at " + object_name + " and shakes";
-				if (gender == "male") { notification_string += " his head."; }
-				if (gender == "female") { notification_string += " her head."; }
-				break;
-		}
-	}
 
 
 

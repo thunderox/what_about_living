@@ -32,7 +32,7 @@ new_room(14, "Supermarket", "gfx/rooms/room14_supermarket.jpg", 8, 0, 15, 0);
 new_room(15, "Road", "gfx/rooms/road1.jpg", 0, 0, 16, 14);
 new_room(16, "Road", "gfx/rooms/road1.jpg", 0, 20, 0, 15);
 new_room(17, "Recreation Area", "gfx/rooms/room17_recreation_area.jpg", 12, 19, 0, 0);
-new_room(18, "Recreation Area", "gfx/rooWhatms/room18_recreation_area.jpg", 13, 0, 0, 0);
+new_room(18, "Recreation Area", "gfx/rooms/room18_recreation_area.jpg", 13, 0, 0, 0);
 new_room(19, "The Toilets", "gfx/rooms/room19_bog.jpg", 17, 0, 0, 0);
 new_room(20, "Check Point", "gfx/rooms/room20_checkpoint.jpg", 16, 0, 0, 0);
 
